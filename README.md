@@ -5,9 +5,9 @@
 ## ejemplo
 - Use el complemento `pytorch_lite` para ejecutar el modelo en las imágenes. La imagen es capturada por la cámara o seleccionada de la galería (con la ayuda del complemento image_picker ).
 
-![](https://drive.google.com/file/d/1q8izg1G9P6kM_DVL8qDITQV6L5_Y-3_B/view) 
-![](https://drive.google.com/file/d/1G6oVixTve3BPw2ml7St7WX6f7WEM1jcO/view) 
-![](https://drive.google.com/file/d/1AmXw5_4fDgl8KHjVj9JQezZarcTXE-lX/view) 
+![](peces1.png) 
+![](peces2.png) 
+![](peces3.png) 
 
 la aplicacion fue probada en un version de android 6.0.1 [descargar](https://drive.google.com/file/d/1_PSQMNMUyT6vfoeqPHLaRMXd9FC-l4Bh/view?usp=sharing) app-release.apk
 
