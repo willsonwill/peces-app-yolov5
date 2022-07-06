@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
     loadModel();
   }
 
-  //load your model
+  //Cargar el modelo
   Future loadModel() async {
     String pathObjectDetectionModel = "assets/models/labels_objectDetection_Peces_yolov5.torchscript";
     String pathObjectClasificadorModel = "assets/models/labels_objectClasificacion_Peces_yolov5.torchscript";
