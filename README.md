@@ -9,7 +9,7 @@
 ![](peces2.png) 
 ![](peces3.png) 
 
-la aplicacion fue probada en un version de android 6.0.1 [descargar](https://drive.google.com/file/d/1aZWiphhH-q2RFRFrWfu5NKncx30L5O7Y/view?usp=sharing) app-release.apk
+la aplicacion fue probada en un version de android 11.0 [descargar](https://drive.google.com/file/d/1aZWiphhH-q2RFRFrWfu5NKncx30L5O7Y/view?usp=sharing) app-release.apk
 
 
 ## instalar 
