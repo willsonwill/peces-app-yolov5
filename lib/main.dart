@@ -24,6 +24,7 @@ class _MyAppState extends State<MyApp> {
   List<ResultObjectDetection?> objDetect = [];
   List<ResultObjectDetection?> objClasificador = [];
   int? clase;
+  double? score;
   @override
   void initState() {
     super.initState();
@@ -36,7 +37,7 @@ class _MyAppState extends State<MyApp> {
     String pathObjectClasificadorModel = "assets/models/labels_objectClasificacion_Peces_yolov5.torchscript";
     try {
       _objectModel = await PytorchLite.loadObjectDetectionModel(
-          pathObjectDetectionModel, 2, 640, 640,
+          pathObjectDetectionModel, 4, 640, 640,
           labelPath: "assets/labels/labels_objectDetection_Peces_yolov5.txt");
       _clasficadorModel = await PytorchLite.loadObjectDetectionModel(
           pathObjectClasificadorModel, 3, 640, 640,
@@ -57,21 +58,37 @@ class _MyAppState extends State<MyApp> {
     });
     objDetect = await _objectModel.getImagePrediction(
         await File(image!.path).readAsBytes(),
-        minimumScore: 0.1,
+        minimumScore: 0.5,
         IOUThershold: 0.3);
     objClasificador = await _clasficadorModel
         .getImagePredictionList(await File(image!.path).readAsBytes());
     objClasificador.forEach((element) {
       clase=element?.classIndex;
-      if (clase==0) {
+      score=element?.score;
+      if (clase==0 && score! > 0.6) {
         _imagePrediction='PACU';
-      }else if(clase==1){
+      }else if(clase==1 && score! > 0.6){
         _imagePrediction='SABALO';
-      }else if(clase==2){
+      }else if(clase==2 && score! > 0.6){
         _imagePrediction='SURUBI';
       }else{
-        _imagePrediction='';
+         _imagePrediction='SIN CLASIFICAR';
       }
+
+      // print({
+      //   "score": element?.score,
+      //   "className": element?.className,
+      //   "class": element?.classIndex,
+      //   "rect": {
+      //     "left": element?.rect.left,
+      //     "top": element?.rect.top,
+      //     "width": element?.rect.width,
+      //     "height": element?.rect.height,
+      //     "right": element?.rect.right,
+      //     "bottom": element?.rect.bottom,
+      //   },
+      // });
+
     });
     setState(() {
       _image = File(image.path);
@@ -86,21 +103,36 @@ class _MyAppState extends State<MyApp> {
     });
     objDetect = await _objectModel.getImagePrediction(
         await File(image!.path).readAsBytes(),
-        minimumScore: 0.1,
+        minimumScore: 0.5,
         IOUThershold: 0.3);
     objClasificador = await _clasficadorModel
         .getImagePredictionList(await File(image!.path).readAsBytes());
     objClasificador.forEach((element) {
       clase=element?.classIndex;
-      if (clase==0) {
+      score=element?.score;
+      if (clase==0 && score! > 0.6) {
         _imagePrediction='PACU';
-      }else if(clase==1){
+      }else if(clase==1 && score! > 0.6){
         _imagePrediction='SABALO';
-      }else if(clase==2){
+      }else if(clase==2 && score! > 0.6){
         _imagePrediction='SURUBI';
       }else{
-         _imagePrediction='';
+         _imagePrediction='SIN CLASIFICAR';
       }
+
+      // print({
+      //   "score": element?.score,
+      //   "className": element?.className,
+      //   "class": element?.classIndex,
+      //   "rect": {
+      //     "left": element?.rect.left,
+      //     "top": element?.rect.top,
+      //     "width": element?.rect.width,
+      //     "height": element?.rect.height,
+      //     "right": element?.rect.right,
+      //     "bottom": element?.rect.bottom,
+      //   },
+      // });
     });
     setState(() {
       objectDetection=false;
@@ -154,7 +186,7 @@ class _MyAppState extends State<MyApp> {
                         ? 
                           Text("$_imagePrediction",textAlign: TextAlign.center)
                         :
-                          const Text('SIN RESULTADOS.',textAlign: TextAlign.center,
+                          const Text('SIN CLASIFICAR.',textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 14,
                             ),
@@ -163,23 +195,32 @@ class _MyAppState extends State<MyApp> {
                         ?
                           objDetect.isNotEmpty 
                           ? 
-                            const Text(" NO ACTO PARA EL CONSUMO. ",textAlign: TextAlign.center,
+                            const Text("NO ACTO PARA EL CONSUMO.",textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Color.fromARGB(255, 230, 120, 120),
                               ),
                             )
                           :
-                            const Text('ACTO PARA EL CONSUMO',textAlign: TextAlign.center,
+                            const Text("ACTO PARA EL CONSUMO.",textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.green
                               ),
                             )
                         :
-                          const Text("-",textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 14,
-                            ),
-                          )
+                          objDetect.isNotEmpty 
+                          ? 
+                            const Text("NO ACTO PARA EL CONSUMO.",textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 230, 120, 120),
+                              ),
+                            )
+                          :
+                            const Text("-",textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            )
+                          
                       )
                     )
                   ),

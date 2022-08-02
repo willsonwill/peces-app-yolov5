@@ -1,2 +1,4 @@
 escama
-malo
+necrosis_muscular
+melanosis
+necrosis
