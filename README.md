@@ -9,7 +9,7 @@
 ![](peces2.png) 
 ![](peces3.png) 
 
-la aplicacion fue probada en un version de android 11.0 [descargar](https://drive.google.com/file/d/1aZWiphhH-q2RFRFrWfu5NKncx30L5O7Y/view?usp=sharing) app-release.apk
+la aplicacion fue probada en un version de android 11.0 [descargar](https://drive.google.com/file/d/104CK2sc15LJK4ugeShbeA_ekQZ8UCUfq/view?usp=sharing) app-release.apk
 
 
 ## instalar 
@@ -36,6 +36,8 @@ Los modelos se encuentran en la carpeta `assets`.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1WxDoBRMTYYLJq8ROm792vBWTjAsYSrGY?usp=sharing) Deteccion y clasificacion de peces usando YOLOv5
 
+## documentacion
+documento [ver](https://drive.google.com/file/d/1g7fN8oRauw2wdr6Th3jvOFKSnUzN3o3t/view?usp=sharing) 
 
 ## Getting Started
 
