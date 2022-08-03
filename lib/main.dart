@@ -215,12 +215,22 @@ class _MyAppState extends State<MyApp> {
                               ),
                             )
                           :
-                            const Text("-",textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            )
-                          
+                            _image == null
+                            ?
+                              const Text(
+                                "-",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                ),
+                              )
+                            :
+                              const Text(
+                                "ACTO PARA EL CONSUMO.",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.green),
+                              )
                       )
                     )
                   ),
